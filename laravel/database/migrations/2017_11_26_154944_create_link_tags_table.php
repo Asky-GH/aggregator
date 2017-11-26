@@ -15,6 +15,8 @@ class CreateLinkTagsTable extends Migration
     {
         Schema::create('link_tags', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('link_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
             $table->timestamps();
         });
     }
