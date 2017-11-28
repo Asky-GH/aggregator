@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Status extends Model
 {
     /**
-     * Inverse relations
+     * Relations
      */
     public function links(){
-        return $this->belongsTo('App\Link');
+        return $this->hasMany('App\Link');
     }
 }
