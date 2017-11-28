@@ -46,6 +46,12 @@ class DatabaseSeeder extends Seeder
             'status_id' => 1,
         ]);
 
+        DB::table('comments')->insert([
+            'user_id' => 2,
+            'link_id' => 1,
+            'body' => 'Great link! Thank you!',
+        ]);
+
         DB::table('tags')->insert([
             'name' => 'RU',
         ]);
