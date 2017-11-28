@@ -17,6 +17,10 @@ class Link extends Model
         return $this->belongsTo('App\Status');
     }
 
+    public function tags(){
+        return $this->belongsToMany('App\Tag', 'link_tags');
+    }
+
     /**
      * Relations
      */
