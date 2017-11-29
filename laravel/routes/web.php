@@ -13,6 +13,8 @@
 
 Route::get('/', 'LinkController@index');
 
+Route::get('/{link}', 'LinkController@show');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
