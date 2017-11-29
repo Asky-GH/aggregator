@@ -27,4 +27,11 @@ class Link extends Model
     public function comments(){
         return $this->hasMany('App\Comment');
     }
+
+    /**
+     * Scopes
+     */
+    public function scopeApproved($query){
+        return $query->where('status_id', 2);
+    }
 }
