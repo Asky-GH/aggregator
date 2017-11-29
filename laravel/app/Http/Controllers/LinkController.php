@@ -12,4 +12,10 @@ class LinkController extends Controller
 
         return view('main', compact('links'));
     }
+
+    public function show($id){
+        $link = Link::find($id);
+        
+        return view('link', compact('link'));
+    }
 }
