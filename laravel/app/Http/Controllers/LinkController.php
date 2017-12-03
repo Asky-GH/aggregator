@@ -10,7 +10,7 @@ class LinkController extends Controller
     public function index(){
         $links = Link::approved()->get();
 
-        return view('main', compact('links'));
+        return view('links', compact('links'));
     }
 
     public function show(Link $link){
