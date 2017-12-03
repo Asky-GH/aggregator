@@ -11,12 +11,14 @@
 |
 */
 
-// Route::get('/', 'LinkController@index');
-
-// Route::get('/{link}', 'LinkController@show');
+Route::get('/', function(){
+    return view('welcome');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/master', 'TestController@index');
+Route::get('/links', 'LinkController@index');
+
+Route::get('/links/{link}', 'LinkController@show');
