@@ -1,10 +1,16 @@
 <aside class="col-sm-3 ml-sm-auto blog-sidebar">
     <div class="sidebar-module sidebar-module-inset">
-        <h4>About</h4>
-        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        <h4>О сайте</h4>
+
+        <p>
+            Настоящий сайт является агрегатором ссылок на различные ресурсы интернета, связанные с программированием. 
+            Делитесь своими любимыми онлайн курсами и туториалами, а также открывайте для себя что то новое. 
+        </p>
     </div>
+
     <div class="sidebar-module">
-        <h4>Archives</h4>
+        <h4>Архив</h4>
+
         <ol class="list-unstyled">
             <li><a href="#">March 2014</a></li>
             <li><a href="#">February 2014</a></li>
@@ -18,14 +24,6 @@
             <li><a href="#">June 2013</a></li>
             <li><a href="#">May 2013</a></li>
             <li><a href="#">April 2013</a></li>
-        </ol>
-    </div>
-    <div class="sidebar-module">
-        <h4>Elsewhere</h4>
-        <ol class="list-unstyled">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
         </ol>
     </div>
 </aside><!-- /.blog-sidebar -->
