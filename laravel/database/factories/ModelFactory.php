@@ -22,3 +22,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Link::class, function (Faker\Generator $faker) {
+    return [
+        'title' => substr($faker->sentence(2), 0, -1),
+        'url' => $faker->url,
+        'description' => $faker->paragraph,
+    ];
+});
+
+$factory->define(App\Comment::class, function (Faker\Generator $faker) {
+    return [
+        'body' => $faker->paragraph,
+    ];
+});
