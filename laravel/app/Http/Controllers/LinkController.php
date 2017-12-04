@@ -23,9 +23,9 @@ class LinkController extends Controller
 
     public function store(){
         $this->validate(request(), [
-            'title' => 'required',
-            'description' => 'required',
-            'url' => 'required',
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+            'url' => 'required|url|max:255',
         ]);
 
         Link::create(request(['title', 'description', 'url']));
