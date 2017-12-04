@@ -11,11 +11,15 @@
             <div class="row">
                 @include('layouts/main')
 
+                @if (!str_contains(Route::currentRouteName(), ['login', 'register']))
                 @include('layouts/sidebar')
+                @endif
             </div><!-- /.row -->
         </main><!-- /.container -->
 
+        @if (!str_contains(Route::currentRouteName(), ['login', 'register']))
         @include('layouts/footer')
+        @endif
     </div><!-- .app -->
     
     <!-- Scripts -->
