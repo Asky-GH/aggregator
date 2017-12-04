@@ -25,9 +25,9 @@ Route::get('/links', 'LinkController@index');
 
 Route::post('/links', 'LinkController@store');
 
-Route::get('/links/create', 'LinkController@create');
+Route::get('/links/create', 'LinkController@create')->middleware('auth');
 
 Route::get('/links/{link}', 'LinkController@show');
 
 
-Route::post('/links/{link}/comments', 'CommentController@store');
+Route::post('/links/{link}/comments', 'CommentController@store')->middleware('auth');
