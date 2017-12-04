@@ -15,10 +15,19 @@ Route::get('/', function(){
     return view('welcome');
 });
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::get('/links', 'LinkController@index');
 
+Route::post('/links', 'LinkController@store');
+
+Route::get('/links/create', 'LinkController@create');
+
 Route::get('/links/{link}', 'LinkController@show');
+
+
+Route::post('/links/{link}/comments', 'CommentController@store');
