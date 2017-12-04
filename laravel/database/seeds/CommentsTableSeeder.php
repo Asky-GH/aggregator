@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Carbon\Carbon;
 
 class CommentsTableSeeder extends Seeder
 {
@@ -12,12 +11,14 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('comments')->insert([
+        factory(App\Comment::class, 2)->create([
             'user_id' => 2,
             'link_id' => 1,
-            'body' => 'Great link! Thank you!',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+        ]);
+
+        factory(App\Comment::class)->create([
+            'user_id' => 1,
+            'link_id' => 1,
         ]);
     }
 }
