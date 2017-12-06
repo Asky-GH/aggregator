@@ -8,9 +8,15 @@ use App\Link;
 class LinkController extends Controller
 {
     public function index(){
-        $links = Link::approved()->latest()->get();
+        $links = Link::approved()->latest()->filter(request(['month', 'year']))->get();
 
-        return view('links.index', compact('links'));
+        $archives = Link::selectRaw('year(created_at) year, monthname(created_at) month, count(*) approved')
+                                    ->groupBy('year', 'month')
+                                    ->orderByRaw('min(created_at) desc')
+                                    ->get()
+                                    ->toArray();
+
+        return view('links.index', compact('links', 'archives'));
     }
 
     public function show(Link $link){
