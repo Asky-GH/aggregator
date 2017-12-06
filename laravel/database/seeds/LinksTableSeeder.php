@@ -18,7 +18,7 @@ class LinksTableSeeder extends Seeder
 
         factory(App\Link::class, 2)->create([
             'user_id' => 2,
-            'status_id' => 0,
+            'status_id' => 1,
         ]);
     }
 }

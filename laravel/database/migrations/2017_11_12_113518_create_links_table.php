@@ -19,7 +19,7 @@ class CreateLinksTable extends Migration
             $table->string('url')->unique();
             $table->text('description');
             $table->integer('user_id')->unsigned();
-            $table->integer('status_id')->unsigned()->default(0);
+            $table->integer('status_id')->unsigned()->default(1);
             $table->timestamps();
         });
     }
