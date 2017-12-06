@@ -13,6 +13,7 @@
     </p>
 </div>
 
+@if (count($link->comments))
 <hr>
 
 <div class="comments">
@@ -28,7 +29,9 @@
     @endforeach
     </ul>
 </div>
+@endif
 
+@if (Auth::check())
 <hr>
 
 <div class="card">
@@ -48,4 +51,6 @@
         @include('layouts.errors')
     </div>
 </div>
+@endif
+
 @endsection
