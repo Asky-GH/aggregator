@@ -30,4 +30,4 @@ Route::get('/links/create', 'LinkController@create')->middleware('auth');
 Route::get('/links/{link}', 'LinkController@show');
 
 
-Route::post('/links/{link}/comments', 'CommentController@store')->middleware('auth');
+Route::post('/links/{link}/comments', 'CommentController@store');
