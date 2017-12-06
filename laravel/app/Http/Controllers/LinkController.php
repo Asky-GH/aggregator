@@ -28,8 +28,8 @@ class LinkController extends Controller
             'url' => 'required|url|max:255',
         ]);
 
-        Link::create(request(['title', 'description', 'url']));
-
+        auth()->user()->addLink(new Link(request(['title', 'url', 'description'])));
+        
         return redirect('/links');
     }
 }
