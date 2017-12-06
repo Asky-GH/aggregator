@@ -11,13 +11,19 @@
             <div class="row">
                 @include('layouts/main')
 
-                @if (!str_contains(Route::currentRouteName(), ['login', 'register']))
+                @if (!(str_contains(Route::currentRouteName(), ['login', 'register']) 
+                    || str_contains(Route::currentRouteAction(), [
+                        'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm', 
+                        'App\Http\Controllers\Auth\ResetPasswordController@showResetForm'])))
                 @include('layouts/sidebar')
                 @endif
             </div><!-- /.row -->
         </main><!-- /.container -->
 
-        @if (!str_contains(Route::currentRouteName(), ['login', 'register']))
+        @if (!(str_contains(Route::currentRouteName(), ['login', 'register']) 
+                    || str_contains(Route::currentRouteAction(), [
+                        'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm', 
+                        'App\Http\Controllers\Auth\ResetPasswordController@showResetForm'])))
         @include('layouts/footer')
         @endif
     </div><!-- .app -->
