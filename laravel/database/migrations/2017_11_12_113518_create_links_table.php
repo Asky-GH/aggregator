@@ -21,6 +21,9 @@ class CreateLinksTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('status_id')->unsigned()->default(1);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('cascade');
         });
     }
 
