@@ -20,11 +20,23 @@ class LinkController extends Controller
     }
 
     public function show(Link $link){
-        return view('links.show', compact('link'));
+        $archives = Link::selectRaw('year(created_at) year, monthname(created_at) month, count(*) approved')
+        ->groupBy('year', 'month')
+        ->orderByRaw('min(created_at) desc')
+        ->get()
+        ->toArray();
+
+        return view('links.show', compact('link', 'archives'));
     }
 
     public function create(){
-        return view('links.create');
+        $archives = Link::selectRaw('year(created_at) year, monthname(created_at) month, count(*) approved')
+        ->groupBy('year', 'month')
+        ->orderByRaw('min(created_at) desc')
+        ->get()
+        ->toArray();
+
+        return view('links.create', compact('archives'));
     }
 
     public function store(){
