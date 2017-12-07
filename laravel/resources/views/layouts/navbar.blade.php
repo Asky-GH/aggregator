@@ -37,6 +37,14 @@
 
                     <ul class="dropdown-menu" role="menu">
                         <li>
+                            <a href="/email/edit">Сменить Email</a>
+                        </li>
+
+                        <li>
+                            <a href="/password/edit">Сменить пароль</a>
+                        </li>
+
+                        <li>
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">

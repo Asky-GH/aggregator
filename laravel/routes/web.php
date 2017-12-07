@@ -17,16 +17,12 @@ Route::get('/', function(){
 
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/links', 'LinkController@index');
-
 Route::post('/links', 'LinkController@store');
-
 Route::get('/links/create', 'LinkController@create')->middleware('auth');
-
 Route::get('/links/{link}', 'LinkController@show');
 
 
@@ -34,3 +30,10 @@ Route::post('/links/{link}/comments', 'CommentController@store');
 
 
 Route::get('/links/tags/{tag}', 'TagController@show');
+
+
+Route::get('/email/edit', 'EmailController@index')->middleware('auth');
+Route::post('/email/edit', 'EmailController@store');
+
+Route::get('/password/edit', 'PasswordController@index')->middleware('auth');
+Route::post('/password/edit', 'PasswordController@store');
