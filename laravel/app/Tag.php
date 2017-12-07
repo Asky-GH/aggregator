@@ -12,4 +12,8 @@ class Tag extends Model
     public function links(){
         return $this->belongsToMany('App\Link');
     }
+
+    public function getRouteKeyName(){
+        return 'name';
+    }
 }
