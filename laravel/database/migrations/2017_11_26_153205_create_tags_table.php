@@ -19,8 +19,8 @@ class CreateTagsTable extends Migration
         });
 
         Schema::create('link_tag', function (Blueprint $table) {
-            $table->integer('link_id');
-            $table->integer('tag_id');
+            $table->integer('link_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
             $table->primary(['link_id', 'tag_id']);
         });
     }
