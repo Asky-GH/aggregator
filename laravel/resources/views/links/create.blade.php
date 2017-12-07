@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="blog-post">
-    <h2 class="blog-post-title">Добавить ссылку</h2>
+    <h2 class="blog-post-title">Новая ссылка</h2>
 
     <hr>
 
