@@ -8,6 +8,12 @@
 
     <p class="blog-post-meta">{{ $link->created_at->toFormattedDateString() }}</p>
 
+    <h5>
+        @foreach ($link->tags as $tag)
+        <span class="label label-danger">{{ $tag->name }}</span>
+        @endforeach
+    </h5><br>
+
     <p>{{ $link->description }}</p>
 
     <p>
@@ -41,8 +47,14 @@
         <form method="POST" action="/links/{{ $link->id }}/comments">
             {{ csrf_field() }}
 
-            <div class="form-group">
+            <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
                 <textarea name="body" placeholder="Комментарий..." class="form-control"></textarea>
+
+                @if ($errors->has('body'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('body') }}</strong>
+                    </span>
+                @endif
             </div>
 
             <div class="form-group">
@@ -50,7 +62,7 @@
             </div>
         </form>
 
-        @include('layouts.errors')
+        <!-- @include('layouts.errors') -->
     </div>
 </div>
 @endif
