@@ -19,4 +19,16 @@
             @endforeach
         </ol>
     </div>
+
+    <div class="sidebar-module">
+        <h4>Тэги</h4>
+
+        <ol class="list-unstyled">
+            @foreach ($tags as $tag)
+            <li>
+                <a href="/links/tags/{{ $tag->name }}">{{ $tag->name }}</a>
+            </li>
+            @endforeach
+        </ol>
+    </div>
 </aside><!-- /.blog-sidebar -->
