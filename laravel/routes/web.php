@@ -31,3 +31,6 @@ Route::get('/links/{link}', 'LinkController@show');
 
 
 Route::post('/links/{link}/comments', 'CommentController@store');
+
+
+Route::get('/links/tags/{tag}', 'TagController@show');
