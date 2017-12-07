@@ -25,13 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $links = Link::approved()->latest()->filter(request(['month', 'year']))->get();
-        
-        $archives = Link::selectRaw('year(created_at) year, monthname(created_at) month, count(*) approved')
-                                    ->groupBy('year', 'month')
-                                    ->orderByRaw('min(created_at) desc')
-                                    ->get()
-                                    ->toArray();
 
-        return view('links.index', compact('links', 'archives'));
+        return view('links.index', compact('links'));
     }
 }

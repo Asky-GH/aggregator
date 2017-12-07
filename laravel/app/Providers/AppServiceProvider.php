@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Link;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('layouts.sidebar', function($view){
+            $view->with('archives', Link::selectRaw('year(created_at) year, monthname(created_at) month, count(*) approved')
+                                        ->groupBy('year', 'month')
+                                        ->orderByRaw('min(created_at) desc')
+                                        ->get()
+                                        ->toArray());
+        });
     }
 
     /**

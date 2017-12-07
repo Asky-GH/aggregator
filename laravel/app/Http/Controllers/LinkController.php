@@ -10,33 +10,15 @@ class LinkController extends Controller
     public function index(){
         $links = Link::approved()->latest()->filter(request(['month', 'year']))->get();
 
-        $archives = Link::selectRaw('year(created_at) year, monthname(created_at) month, count(*) approved')
-                        ->groupBy('year', 'month')
-                        ->orderByRaw('min(created_at) desc')
-                        ->get()
-                        ->toArray();
-
-        return view('links.index', compact('links', 'archives'));
+        return view('links.index', compact('links'));
     }
 
     public function show(Link $link){
-        $archives = Link::selectRaw('year(created_at) year, monthname(created_at) month, count(*) approved')
-                        ->groupBy('year', 'month')
-                        ->orderByRaw('min(created_at) desc')
-                        ->get()
-                        ->toArray();
-
-        return view('links.show', compact('link', 'archives'));
+        return view('links.show', compact('link'));
     }
 
     public function create(){
-        $archives = Link::selectRaw('year(created_at) year, monthname(created_at) month, count(*) approved')
-                        ->groupBy('year', 'month')
-                        ->orderByRaw('min(created_at) desc')
-                        ->get()
-                        ->toArray();
-
-        return view('links.create', compact('archives'));
+        return view('links.create');
     }
 
     public function store(){
