@@ -19,6 +19,8 @@ class CommentController extends Controller
             'body' => request('body')
         ]);
 
+        session()->flash('message', 'Комментарий добавлен!');
+
         return back();
     }
 }

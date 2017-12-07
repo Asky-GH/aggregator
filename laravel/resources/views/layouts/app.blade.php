@@ -30,5 +30,9 @@
     
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <script>
+        $('#flash-message').delay(5000).fadeOut(300);
+    </script>
 </body>
 </html>

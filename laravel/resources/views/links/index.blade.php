@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('layouts.flash')
+
 @section('content')
 
 @foreach ($links as $link)

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('layouts.flash')
+
 @section('content')
 <div class="blog-post">
     <h2 class="blog-post-title">{{ $link->title }}</h2>

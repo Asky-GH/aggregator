@@ -11,30 +11,30 @@ class LinkController extends Controller
         $links = Link::approved()->latest()->filter(request(['month', 'year']))->get();
 
         $archives = Link::selectRaw('year(created_at) year, monthname(created_at) month, count(*) approved')
-                                    ->groupBy('year', 'month')
-                                    ->orderByRaw('min(created_at) desc')
-                                    ->get()
-                                    ->toArray();
+                        ->groupBy('year', 'month')
+                        ->orderByRaw('min(created_at) desc')
+                        ->get()
+                        ->toArray();
 
         return view('links.index', compact('links', 'archives'));
     }
 
     public function show(Link $link){
         $archives = Link::selectRaw('year(created_at) year, monthname(created_at) month, count(*) approved')
-        ->groupBy('year', 'month')
-        ->orderByRaw('min(created_at) desc')
-        ->get()
-        ->toArray();
+                        ->groupBy('year', 'month')
+                        ->orderByRaw('min(created_at) desc')
+                        ->get()
+                        ->toArray();
 
         return view('links.show', compact('link', 'archives'));
     }
 
     public function create(){
         $archives = Link::selectRaw('year(created_at) year, monthname(created_at) month, count(*) approved')
-        ->groupBy('year', 'month')
-        ->orderByRaw('min(created_at) desc')
-        ->get()
-        ->toArray();
+                        ->groupBy('year', 'month')
+                        ->orderByRaw('min(created_at) desc')
+                        ->get()
+                        ->toArray();
 
         return view('links.create', compact('archives'));
     }
@@ -47,6 +47,8 @@ class LinkController extends Controller
         ]);
 
         auth()->user()->addLink(new Link(request(['title', 'url', 'description'])));
+
+        session()->flash('message', 'Ваша ссылка отправлена на рассмотрение администратору!');
         
         return redirect('/links');
     }
