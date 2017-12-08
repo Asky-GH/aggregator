@@ -10,7 +10,7 @@
         <a href="/links/{{ $link->id }}">{{ $link->title }}</a>
     </h2>
 
-    <p class="blog-post-meta">{{ $link->created_at->toFormattedDateString() }}</p>
+    <p class="blog-post-meta">{{ $link->updated_at->toFormattedDateString() }}</p>
 
     <h5>
         @foreach ($link->tags as $tag)

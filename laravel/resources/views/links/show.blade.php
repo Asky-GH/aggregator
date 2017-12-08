@@ -6,7 +6,7 @@
 <div class="blog-post">
     <h2 class="blog-post-title">{{ $link->title }}</h2>
 
-    <p class="blog-post-meta">{{ $link->created_at->toFormattedDateString() }}</p>
+    <p class="blog-post-meta">{{ $link->updated_at->toFormattedDateString() }}</p>
 
     <h5>
         @foreach ($link->tags as $tag)
