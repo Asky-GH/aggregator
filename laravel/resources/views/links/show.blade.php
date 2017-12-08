@@ -60,8 +60,15 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Добавить комментарий</button>
             </div>
-        </form>
 
+            @if (auth()->user()->email == "asky.gm@gmail.com")
+            <div class="form-group">
+                <a href="/pending/{{ $link->id }}">
+                    <button type="button" class="btn btn-primary">Редактировать ссылку</button>
+                </a>                                
+            </div>
+            @endif
+        </form>
         <!-- @include('layouts.errors') -->
     </div>
 </div>

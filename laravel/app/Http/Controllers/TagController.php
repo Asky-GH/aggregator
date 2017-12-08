@@ -12,4 +12,20 @@ class TagController extends Controller
 
         return view('links.index', compact('links'));
     }
+
+    public function create(){
+        return view('create');
+    }
+
+    public function store(){
+        $this->validate(request(), [
+            'name' => 'required|max:255',
+        ]);
+
+        $tag = new Tag;
+        $tag->name = request('name');
+        $tag->save();
+        
+        return redirect('/pending');
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Link;
+use App\Mail\Fail;
 
 class LinkController extends Controller
 {
@@ -49,6 +50,16 @@ class LinkController extends Controller
         $link->save();
 
         $link->tags()->sync(request('tags'));
+
+        return redirect('/links');
+    }
+
+    public function delete(Link $link){
+        $user = $link->user;
+
+        $link->delete();
+
+        \Mail::to($user)->send(new Fail($user));
 
         return redirect('/links');
     }

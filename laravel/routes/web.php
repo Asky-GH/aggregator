@@ -25,6 +25,7 @@ Route::post('/links', 'LinkController@store');
 Route::get('/links/create', 'LinkController@create')->middleware('auth');
 Route::get('/links/{link}', 'LinkController@show');
 Route::patch('/links/{link}', 'LinkController@update');
+Route::delete('/links/{link}', 'LinkController@delete');
 
 Route::get('/pending', 'CheckController@index')->middleware('auth', 'admin');
 Route::get('/pending/{link}', 'CheckController@edit')->middleware('auth', 'admin');
@@ -33,7 +34,8 @@ Route::post('/links/{link}/comments', 'CommentController@store');
 
 
 Route::get('/links/tags/{tag}', 'TagController@show');
-
+Route::get('/tags/create', 'TagController@create')->middleware('auth', 'admin');
+Route::post('/tags', 'TagController@store');
 
 Route::get('/email/edit', 'EmailController@index')->middleware('auth');
 Route::post('/email/edit', 'EmailController@store');

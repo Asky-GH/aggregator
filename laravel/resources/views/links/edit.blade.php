@@ -60,7 +60,23 @@
             <button type="submit" class="btn btn-primary">Добавить ссылку</button>
         </div>        
 
+        <div class="form-group">
+            <a href="/tags/create">
+                <button type="button" class="btn btn-primary">Добавить тэг</button>
+            </a>                                
+        </div>
+
         <!-- @include('layouts.errors') -->
+    </form>
+
+    <form action="/links/{{ $link->id }}" method="POST">
+        <input name="_method" type="hidden" value="DELETE">
+
+        {{ csrf_field() }}
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Удалить ссылку</button>
+        </div>
     </form>
 </div>
 @endsection
