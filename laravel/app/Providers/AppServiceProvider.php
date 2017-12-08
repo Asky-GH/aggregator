@@ -16,15 +16,19 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('layouts.sidebar', function($view){
-            $archives = Link::selectRaw('year(created_at) year, monthname(created_at) month, count(*) approved')
+            $archives = Link::selectRaw('year(updated_at) year, monthname(updated_at) month, count(*) approved')
                             ->groupBy('year', 'month')
-                            ->orderByRaw('min(created_at) desc')
+                            ->orderByRaw('min(updated_at) desc')
                             ->get()
                             ->toArray();
 
             $tags = Tag::has('links')->get();
             
             $view->with(compact('archives', 'tags'));
+        });
+
+        view()->composer('links.edit', function($view){
+            $view->with('tags', Tag::all());
         });
     }
 

@@ -38,6 +38,10 @@ class Link extends Model
         return $query->where('status_id', 2);
     }
 
+    public function scopeUnapproved($query){
+        return $query->where('status_id', 1);
+    }
+
     public function scopeFilter($query, $filters){
         if ($month = $filters['month']){
             $query->whereMonth('created_at', Carbon::parse($month)->month);

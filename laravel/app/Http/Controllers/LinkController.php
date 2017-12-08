@@ -8,7 +8,7 @@ use App\Link;
 class LinkController extends Controller
 {
     public function index(){
-        $links = Link::approved()->latest()->filter(request(['month', 'year']))->get();
+        $links = Link::approved()->latest('updated_at')->filter(request(['month', 'year']))->get();
 
         return view('links.index', compact('links'));
     }
@@ -32,6 +32,24 @@ class LinkController extends Controller
 
         session()->flash('message', 'Ваша ссылка отправлена на рассмотрение администратору!');
         
+        return redirect('/links');
+    }
+
+    public function update(Link $link){
+        $this->validate(request(), [
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+            'url' => 'required|url|max:255',
+        ]);
+
+        $link->title = request('title');
+        $link->description = request('description');
+        $link->url = request('url');
+        $link->status_id = 2;
+        $link->save();
+
+        $link->tags()->sync(request('tags'));
+
         return redirect('/links');
     }
 }

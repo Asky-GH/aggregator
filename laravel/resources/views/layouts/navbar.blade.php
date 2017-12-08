@@ -36,6 +36,12 @@
                     </a>
 
                     <ul class="dropdown-menu" role="menu">
+                        @if (Auth::user()->email == "asky.gm@gmail.com")
+                        <li>
+                            <a href="/pending">Ожидающие</a>
+                        </li>
+                        @endif
+
                         <li>
                             <a href="/email/edit">Сменить Email</a>
                         </li>
